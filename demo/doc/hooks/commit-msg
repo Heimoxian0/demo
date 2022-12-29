@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+const fs = require('fs')
+
+const msg = fs.readFileSync(process.argv[2], 'utf-8').trim()
+const commitRE = /^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?: .{1,100}/
+const secondRow = /[^\n]*\n([^\n]*)/
+
+if (!commitRE.test(msg)) {
+  console.error('错误描述：不合规范的 commit 消息格式，请使用正确的提交格式')
+  console.error('提交格式：feat: |fix: |docs: |style: |refactor: |perf: |test: |build: |ci: |chore: |revert: ')
+  process.exit(1)
+}
+
+if (!secondRow.test(msg)) {
+  console.error('错误描述：请在第二行添加具体描述')
+  process.exit(1)
+}

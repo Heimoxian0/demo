@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.4.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.gccloud.demo</groupId>
+    <artifactId>demo</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>demo</name>
+    <description>基于千行开发框架的demo工程</description>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <!--    统一定义千行版本，后面统一使用该变量，方便版本升级  -->
+        <gc-starter.version>2.2.1.RELEASE</gc-starter.version>
+    </properties>
+
+    <modules>
+        <module>common</module>
+        <module>service</module>
+        <module>controller</module>
+        <module>server</module>
+    </modules>
+</project>

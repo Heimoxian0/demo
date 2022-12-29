@@ -1,0 +1,40 @@
+spring:
+  servlet:
+    multipart:
+      # 配置上传下载文件的最大值
+      max-file-size: 500MB
+      max-request-size: 500MB
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:mysql://localhost:3306/gc_cloud_starter?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: 12345
+  resources:
+    static-locations: classpath:/static/,classpath:/META-INF/resources/,classpath:/META-INF/resources/webjars/,file:${gc.starter.file.basePath}
+
+gc:
+  starter:
+    jwt:
+      storeStrategy: PROCESS
+    logger:
+      enable: true
+    shiro:
+      enable: true
+      filter-chain-definition-map:
+        '[/test/**]': anon
+        '[/cas/login/**]': anon
+        '[/cas/logout/**]': anon
+        '[/maxkey/**]': anon
+        '[/oauth/**]': anon
+    file:
+      # 服务器上的一个存储文件的绝对路径，需要有写入权限
+      basePath: /usr/local/upload
+      # 启动服务的地址、外网能够访问的地址
+      urlPrefix: http://127.0.0.1:8081/gc-starter-server/static/
+    csrf:
+      # 是否允许不传入Referer头
+      allowedEmpty: true
+      # 允许哪些 Referer 可以访问，以所列的url开头表示允许
+      allowedReferers:
+        - http://

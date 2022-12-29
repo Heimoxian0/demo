@@ -1,0 +1,18 @@
+#工程访问配置
+server:
+  port: 8081
+  servlet:
+    context-path: /gc-starter-server
+
+#spring环境配置
+spring:
+  profiles:
+    # 运行环境 dev|test|prod,根据active动态加载application-active.yml配置文件
+    # 切换数据库时，注意下面的-xxx 也修改为对应的数据库(mysql、oracle、pg)
+    active: dev
+    include: base,druid-mysql,mybatis-plus-mysql,cas
+
+# mybatis
+mybatis-plus:
+  # 实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.gccloud.starter.*.entity,com.gccloud.demo.demo.common.entity
